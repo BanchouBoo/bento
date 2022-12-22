@@ -34,7 +34,7 @@ You may also define a different [build mode](https://ziglang.org/documentation/m
 
 ## features
 - Define a list of rectangles that can be selected by piping it in, with each line being a new rectangle
-    - Format is the same as [slurp](https://github.com/emersion/slurp), `x,y wxh label` (label is optional)
+    - Format is the same as [slurp](https://github.com/emersion/slurp), `x,y wxh label` (label is optional; format for the rects may change later, it's only like this now for the sake of compatibility)
     - On X11 if you don't pass in rectangles manually, then rectangles will instead be generated from the currently visible windows with labels set to the window ID. This can be disabled with the `--force-no-default-rects` flag
 
 - Multiple selection modes
