@@ -30,6 +30,8 @@ zig build -p ~/.local
 
 You can disable backends in the build with `-Dx11-backend=false` and `-Dwayland-backend=false`
 
+You may also define a different [build mode](https://ziglang.org/documentation/master/#Build-Mode) using `-Dmode=<mode>`, the default is `ReleaseSmall`
+
 ## features
 - Define a list of rectangles that can be selected by piping it in, with each line being a new rectangle
     - Format is the same as [slurp](https://github.com/emersion/slurp), `x,y wxh label` (label is optional)
