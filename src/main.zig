@@ -182,10 +182,11 @@ fn eventHandler(backend: Backend) !EventResult {
                     var i: usize = state.rectangles.len;
                     while (i > 0) : (i -= 1) {
                         const rectangle = state.rectangles[i - 1];
-                        if (rectangle.inBounds(motion.x, motion.y)) {
-                            if (state.hovered_rectangle == null or rectangle.getArea() < state.hovered_rectangle.?.getArea()) {
-                                state.hovered_rectangle = rectangle;
-                            }
+                        if (rectangle.inBounds(motion.x, motion.y) and
+                            (state.hovered_rectangle == null or
+                            rectangle.getArea() < state.hovered_rectangle.?.getArea()))
+                        {
+                            state.hovered_rectangle = rectangle;
                         } else if (state.options.@"inactive-border-color".? > 0) {
                             backend.drawRectangle(
                                 rectangle.x1,
