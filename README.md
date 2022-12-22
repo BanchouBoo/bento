@@ -106,3 +106,4 @@ On X11, if the mouse pointer is already captured by another program, bento will 
     - tolerance seems marginally useful
     - i can't think of a good use case for padding, if this is something you would care about let me know
     - nodrag seems useful as an accessibility option, but accessibility tools might already have similar functionality, if you have knowledge on this please let me know
+    - research nodecorations more, i don't have window decorations so i need to find a good environment to test and explore how it works
