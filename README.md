@@ -37,10 +37,6 @@ You can disable backends in the build with `-Dx11-backend=false` and `-Dwayland-
 
 - Multiple selection modes
     - Rectangle: the standard selection mode you'd expect from any region selector
-        - Formatting options:
-            - `%x` and `%y`: the x and y position of the top-left corner of the rectangle
-            - `%w` and `%h`: the width and height of the rectangle
-            - `%l`: the label, if selecting a pre-defined rectangle
         - Modifier keys change how selection works in various ways:
             - SHIFT: Keeps the selection size constant and instead moves the whole selection region around with your mouse
             - CONTROL: Resize from the center of the selection instead of the top left
