@@ -41,7 +41,7 @@ You may also define a different [build mode](https://ziglang.org/documentation/m
     - Rectangle: the standard selection mode you'd expect from any region selector
         - Modifier keys change how selection works in various ways:
             - SHIFT: Keeps the selection size constant and instead moves the whole selection region around with your mouse
-            - CONTROL: Resize from the center of the selection instead of the top left
+            - CONTROL: Slow down the cursor to make the selection more precise
             - ALT: Lock the selection to a specific axis (whichever you move in first)
             - Additionally, if you are holding any of these modifiers when starting a selection and hovering a pre-defined rectangle, it will set the initial selection dimensions to that rectangle
     - Point: select a single pixel
