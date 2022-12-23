@@ -90,6 +90,7 @@ On X11, if the mouse pointer is already captured by another program, bento will 
         - the former would easily scale for multi-line selection (and a line selection could instead be defined as a multi-point selection, with one line being a two-point selection), the latter would be easier to parse in scripts
 - [ ] Rotated rectangle mode
     - should formatting be four pairs of x,y coordinates, or should it be the normal rectangle formatting for what the rectangle would be un-rotated + an angle formatting specifier for the user to apply to those values (whichever would be simpler for cropping a screenshot to a rotated rectangle, research this more)
+        - or maybe i could just do both, `%x`, `%y`, `%w`, `%h`, and `%a` alongside `%p1x`, `%p1y`, etc.
 - [ ] Mode that *only* lets you select pre-defined rectangles
     - formatting would give you everything rectangle formatting does
 
