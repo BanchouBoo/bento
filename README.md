@@ -96,6 +96,7 @@ On X11, if the mouse pointer is already captured by another program, bento will 
 
 ### wayland
 - [ ] Multi-monitor support
+    - i only have one monitor, which makes this hard to develop properly
 - [ ] More efficient line drawing algorithm
     - not too important, won't really matter until diagonal line rendering is necessary
 
