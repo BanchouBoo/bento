@@ -100,6 +100,9 @@ On X11, if the mouse pointer is already captured by another program, bento will 
 - [ ] More efficient line drawing algorithm
     - not too important, won't really matter until diagonal line rendering is necessary
 
+### x11
+- [ ] Don't generate rectangles for windows that are completely covered by other windows
+
 ## other less organized notes and plans that may or may not happen
 - flag to restrict selections to a specific region ([boox](https://github.com/BanchouBoo/boox) had this, but I think I can't really think of any use case to justify it's existence)
 - ability to pass in the starting coordinate for a selection
