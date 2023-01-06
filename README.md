@@ -82,7 +82,7 @@ The `--force-no-default-rects` option will disable default pre-defined rectangle
 On X11, if the mouse pointer is already captured by another program, bento will exit silently with an error, but if you use the `--x11-wait` flag, it will instead wait for the cursor to be free then continue running as normal
 
 ## todo
-### general
+### frontend
 - [ ] Abstract the code to make plugging in new modes easier
 - [ ] Line selection mode
     - click and drag to draw a line between two points
@@ -94,14 +94,15 @@ On X11, if the mouse pointer is already captured by another program, bento will 
 - [ ] Mode that *only* lets you select pre-defined rectangles
     - formatting would give you everything rectangle formatting does
 
-### wayland
-- [ ] Multi-monitor support
-    - i only have one monitor, which makes this hard to develop properly
-- [ ] More efficient line drawing algorithm
-    - not too important, won't really matter until diagonal line rendering is necessary
-
-### x11
-- [ ] Don't generate rectangles for windows that are completely covered by other windows
+### backend
+- [ ] provide a way for backends to dynamically update the rectangles they provide, this will allow the X11 backend to fully simulate the behavior of traditional region selection tools that are directly aware of windows
+- #### wayland
+    - [ ] Multi-monitor support
+        - i only have one monitor, which makes this hard to develop properly
+    - [ ] More efficient line drawing algorithm
+        - not too important, won't really matter until diagonal line rendering is necessary
+- #### x11
+    - [ ] Don't generate rectangles for windows that are completely covered by other windows
 
 ## other less organized notes and plans that may or may not happen
 - flag to restrict selections to a specific region ([boox](https://github.com/BanchouBoo/boox) had this, but I think I can't really think of any use case to justify it's existence)
