@@ -103,6 +103,7 @@ On X11, if the mouse pointer is already captured by another program, bento will 
         - not too important, won't really matter until diagonal line rendering is necessary
 - #### x11
     - [ ] Don't generate rectangles for windows that are completely covered by other windows
+    - [ ] Rewrite using [xzb](https://github.com/BanchouBoo/xzb)
 
 ## other less organized notes and plans that may or may not happen
 - flag to restrict selections to a specific region ([boox](https://github.com/BanchouBoo/boox) had this, but I think I can't really think of any use case to justify it's existence)
@@ -113,3 +114,7 @@ On X11, if the mouse pointer is already captured by another program, bento will 
     - i can't think of a good use case for padding, if this is something you would care about let me know
     - nodrag seems useful as an accessibility option, but accessibility tools might already have similar functionality, if you have knowledge on this please let me know
     - research nodecorations more, i don't have window decorations so i need to find a good environment to test and explore how it works
+- alternative entry point into bento as a library, so it can be embedded into things like window managers and return results as native values instead of 
+    - this should *definitely* be possible through other zig code if i do this, might also make it so bento can be built as a C-compatible library
+- arcan backend? unsure how feasible this is, but arcan is a cool project and i'd like to contribute to it's ecosystem
+    - if i do it, won't be until after the wayland backend is finished
