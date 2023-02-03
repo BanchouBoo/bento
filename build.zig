@@ -1,21 +1,17 @@
 const std = @import("std");
 
 pub fn getBuildMode(b: *std.build.Builder, default: std.builtin.Mode) !std.builtin.Mode {
-    if (b.release_mode) |mode| return mode;
-
     const description = try std.mem.join(b.allocator, "", &.{
         "What mode the project should build in (default: ", @tagName(default), ")",
     });
     const mode = b.option(std.builtin.Mode, "mode", description) orelse default;
 
-    b.is_release = mode != .Debug;
-    b.release_mode = mode;
     return mode;
 }
 
 pub fn build(b: *std.build.Builder) !void {
     const target = b.standardTargetOptions(.{});
-    const mode = try getBuildMode(b, .ReleaseSmall);
+    const optimize = try getBuildMode(b, .ReleaseSmall);
 
     const include_x11_backend = b.option(bool, "x11-backend", "Compile bento with X11 support") orelse true;
     const include_wayland_backend = b.option(bool, "wayland-backend", "Compile bento with Wayland support") orelse true;
@@ -24,9 +20,12 @@ pub fn build(b: *std.build.Builder) !void {
     build_options.addOption(bool, "x11_backend", include_x11_backend);
     build_options.addOption(bool, "wayland_backend", include_wayland_backend);
 
-    const bento = b.addExecutable("bento", "src/main.zig");
-    bento.setTarget(target);
-    bento.setBuildMode(mode);
+    const bento = b.addExecutable(.{
+        .name = "bento",
+        .root_source_file = .{ .path = "src/main.zig" },
+        .optimize = optimize,
+        .target = target,
+    });
     bento.addOptions("build_options", build_options);
     bento.addPackagePath("accord", "pkg/accord/accord.zig");
     bento.install();
