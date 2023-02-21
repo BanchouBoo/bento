@@ -1,3 +1,0 @@
-[submodule "pkg/accord"]
-	path = pkg/accord
-	url = git@github.com:banchouboo/accord

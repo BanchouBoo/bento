@@ -465,7 +465,7 @@ const arguments: []const accord.Option = &(.{
     accord.option('m', "mode", frontend.SelectionMode, .rectangle, .{}),
     accord.option('p', "precision", f64, 5.0, .{}),
     accord.option('f', "format", ?[]const u8, null, .{}),
-    accord.option('a', "aspect", [2]f64, .{ 0.0, 0.0 }, .{ .delimiter = ":" }),
+    accord.option('a', "aspect", [2]f64, .{ 0.0, 0.0 }, .{ .array_delimiter = ":" }),
     accord.option('s', "border-size", ?u32, null, .{}),
     accord.option('c', "border-color", ?u32, null, .{ .radix = 16 }),
     accord.option('i', "inactive-border-color", ?u32, null, .{ .radix = 16 }),

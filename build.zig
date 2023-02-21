@@ -27,7 +27,7 @@ pub fn build(b: *std.build.Builder) !void {
         .target = target,
     });
     bento.addOptions("build_options", build_options);
-    bento.addPackagePath("accord", "pkg/accord/accord.zig");
+    bento.addModule("accord", b.dependency("accord", .{}).module("accord"));
     bento.install();
 
     bento.linkLibC();

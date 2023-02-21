@@ -1,0 +1,10 @@
+.{
+    .name = "bento",
+    .version = "0.0.0",
+    .dependencies = .{
+        .accord = .{
+            .url = "https://github.com/BanchouBoo/accord/archive/ac58b0f34a721b87d78b233fbdd6f3515db88f80.tar.gz",
+            .hash = "12209c635a3541c4d567111f21225ea3cc393f5427a7e0ba5c3268a25f74b0e512ae",
+        },
+    },
+}
