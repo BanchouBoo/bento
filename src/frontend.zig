@@ -149,7 +149,7 @@ pub const Selection = union(SelectionMode) {
                 }.sort;
                 const decls = @typeInfo(Formatting).Struct.decls;
                 comptime var formatting_fields: [decls.len][]const u8 = undefined;
-                comptime for (decls) |declaration, i| {
+                comptime for (decls, 0..) |declaration, i| {
                     formatting_fields[i] = declaration.name;
                 };
                 comptime std.sort.insertionSort([]const u8, formatting_fields[0..], {}, sort);

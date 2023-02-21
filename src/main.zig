@@ -489,6 +489,7 @@ pub fn main() !u8 {
     _ = arg_iterator.skip();
 
     var options = accord.parse(arguments, allocator, &arg_iterator) catch return 1;
+    defer options.positionals.deinit(allocator);
 
     if (options.help) {
         printHelp();

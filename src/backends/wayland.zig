@@ -289,7 +289,7 @@ pub fn clearDraw() void {
 
 pub fn drawLines(points: []const frontend.Point, border_size: u32, border_color: u32) void {
     if (state.buffer) |*buffer| {
-        for (points[0 .. points.len - 1]) |point, i| {
+        for (points[0 .. points.len - 1], 0..) |point, i| {
             const next_point = points[i + 1];
             drawLine(point, next_point, border_size, border_color);
         }
@@ -462,7 +462,6 @@ fn handleSeatCapabilities(
         _ = c.wl_keyboard_add_listener(c.wl_seat_get_keyboard(wl_seat), &keyboard_listener, null);
     }
 }
-
 fn handleSeatName(_: ?*anyopaque, _: ?*c.wl_seat, _: [*c]const u8) callconv(.C) void {}
 
 const seat_listener = c.wl_seat_listener{
@@ -567,21 +566,21 @@ fn handleKeyboardKey(_: ?*anyopaque, _: ?*c.wl_keyboard, _: u32, _: u32, key: u3
         c.XKB_KEY_Control_R,
         => frontend.event_queue.push(frontend.ModKeyEvent.new(
             .control,
-            @bitCast(bool, @truncate(u1, key_state)),
+            key_state == 1,
         )) catch unreachable,
 
         c.XKB_KEY_Alt_L,
         c.XKB_KEY_Alt_R,
         => frontend.event_queue.push(frontend.ModKeyEvent.new(
             .alt,
-            @bitCast(bool, @truncate(u1, key_state)),
+            key_state == 1,
         )) catch unreachable,
 
         c.XKB_KEY_Shift_L,
         c.XKB_KEY_Shift_R,
         => frontend.event_queue.push(frontend.ModKeyEvent.new(
             .shift,
-            @bitCast(bool, @truncate(u1, key_state)),
+            key_state == 1,
         )) catch unreachable,
 
         else => {},
@@ -591,7 +590,6 @@ fn handleKeyboardKey(_: ?*anyopaque, _: ?*c.wl_keyboard, _: u32, _: u32, key: u3
 fn handleKeyboardModifiers(_: ?*anyopaque, _: ?*c.wl_keyboard, _: u32, depressed: u32, latched: u32, locked: u32, group: u32) callconv(.C) void {
     _ = c.xkb_state_update_mask(state.xkb_state, depressed, latched, locked, 0, 0, group);
 }
-
 fn handleKeyboardEnter(_: ?*anyopaque, _: ?*c.wl_keyboard, _: u32, _: ?*c.wl_surface, _: [*c]c.wl_array) callconv(.C) void {}
 fn handleKeyboardLeave(_: ?*anyopaque, _: ?*c.wl_keyboard, _: u32, _: ?*c.wl_surface) callconv(.C) void {}
 fn handleKeyboardRepeatInfo(_: ?*anyopaque, _: ?*c.wl_keyboard, _: i32, _: i32) callconv(.C) void {}
@@ -622,6 +620,7 @@ fn initBuffer(width: u32, height: u32) Buffer {
 
     const pool = c.wl_shm_create_pool(state.shm, state.shm_fd, @intCast(i32, size));
     defer c.wl_shm_pool_destroy(pool);
+    // TODO: buffer listener
 
     const buffer = c.wl_shm_pool_create_buffer(
         pool,
@@ -662,7 +661,6 @@ fn handleLayerSurfaceConfigure(
         c.wl_surface_commit(state.surface);
     }
 }
-
 fn handleLayerSurfaceClosed(_: ?*anyopaque, _: ?*c.zwlr_layer_surface_v1) callconv(.C) void {}
 
 const layer_surface_listener = c.zwlr_layer_surface_v1_listener{

@@ -336,12 +336,12 @@ pub fn getWindowGeometry(window: u32) frontend.WindowGeometry {
 //         null,
 //     ) orelse return base_window;
 //     defer raw_allocator.destroy(tree);
-
+//
 //     const child_count = tree.*.children_len;
 //     if (child_count == 0)
 //         return base_window;
 //     const children = c.xcb_query_tree_children(tree) orelse unreachable;
-
+//
 //     const atom_name = "WM_STATE";
 //     const wm_state_cookie = c.xcb_intern_atom(state.connection, 0, atom_name.len, atom_name);
 //     const wm_state = c.xcb_intern_atom_reply(
@@ -350,7 +350,7 @@ pub fn getWindowGeometry(window: u32) frontend.WindowGeometry {
 //         null,
 //     ) orelse unreachable;
 //     defer raw_allocator.destroy(wm_state);
-
+//
 //     var i: usize = child_count - 1;
 //     while (i >= 0) : (i -= 1) {
 //         const property_cookie = c.xcb_get_property(
@@ -367,7 +367,7 @@ pub fn getWindowGeometry(window: u32) frontend.WindowGeometry {
 //             property_cookie,
 //             null,
 //         );
-
+//
 //         if (property) |p| {
 //             defer raw_allocator.destroy(p);
 //             if (p.*.type == c.XCB_NONE) {
@@ -375,10 +375,10 @@ pub fn getWindowGeometry(window: u32) frontend.WindowGeometry {
 //                 continue;
 //             }
 //         }
-
+//
 //         return children[i];
 //     }
-
+//
 //     i = child_count - 1;
 //     while (i >= 0) : (i -= 1) {
 //         if (children[i] != c.XCB_WINDOW_NONE) {
