@@ -3,8 +3,8 @@
     .version = "0.0.0",
     .dependencies = .{
         .accord = .{
-            .url = "https://github.com/BanchouBoo/accord/archive/ac58b0f34a721b87d78b233fbdd6f3515db88f80.tar.gz",
-            .hash = "12209c635a3541c4d567111f21225ea3cc393f5427a7e0ba5c3268a25f74b0e512ae",
+            .url = "https://github.com/BanchouBoo/accord/archive/779ed2b8f2792d50320b958e1769951482ddd818.tar.gz",
+            .hash = "1220b8da7cb118f5c843bb13d40ab0b511d5d0754c6c35daf0ee40e1c62056df73b7",
         },
     },
 }
